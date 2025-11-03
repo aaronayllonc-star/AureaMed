@@ -1,0 +1,656 @@
+/* ========================
+   VARIABLES DE COLOR
+   ======================== */
+:root {
+  --aurea-granate: #851111;
+  --aurea-orange: #f2982e;
+  --aurea-dark: #222;
+  --aurea-gray: #555;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --shadow: rgba(0,0,0,0.2);
+}
+
+/* ========================
+   BASE
+   ======================== */
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--light-gray);
+  color: var(--aurea-dark);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--aurea-granate);
+}
+
+/* ========================
+   NAVBAR
+   ======================== */
+.navbar {
+  background: linear-gradient(135deg, var(--aurea-granate), var(--aurea-orange));
+  box-shadow: 0 6px 20px var(--shadow);
+  border-radius: 0 0 15px 15px;
+  padding: 15px 20px;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.navbar-nav .nav-link {
+  color: var(--white) !important;
+  font-weight: 600;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  padding: 8px 16px;
+}
+
+.navbar-nav .nav-link:hover {
+  background: var(--white);
+  color: var(--aurea-granate) !important;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.dropdown-menu {
+  background: var(--aurea-granate);
+  border-radius: 12px;
+}
+
+.dropdown-item {
+  color: var(--white) !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--aurea-orange);
+  transform: translateX(5px);
+}
+
+/* ========================
+   HERO / PORTADA
+   ======================== */
+.hero-cover {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--white);
+  text-align: center;
+  background-image:
+    linear-gradient(120deg, rgba(133,17,17,0.85), rgba(242,152,46,0.7)),
+    url("https://www.resound.com/-/media/resound/resound-international/products/hearing-aids/nexia/overlay/full-family/rs_nx_hero-fade/hero-fade-overlay-rs_nx_concert_close2_00255-3200x1500-lighter2.ashx?w=3200&usecustomfunctions=1&centercrop=1&hash=EC1DA6095E22B5A3095C132CD9A94763");
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 -80px 120px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.hero-cover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  animation: zoom 20s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-cover h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.hero-cover p {
+  font-size: 1.3rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+/* ========================
+   TARJETAS
+   ======================== */
+.card-custom {
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-custom:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 30px rgba(0,0,0,0.25);
+}
+
+.card-custom img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card-custom:hover img {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.card-custom:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-overlay h4 {
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.card-overlay .btn {
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.card-overlay .btn:hover {
+  transform: translateY(-3px);
+}
+
+/* ========================
+   EMPRESAS Y ASOCIACIONES
+   ======================== */
+.empresa-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.empresa-item {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.empresa-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+}
+
+.empresa-item img {
+  width: 100px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.empresa-item h3 {
+  color: var(--aurea-granate);
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.empresa-item .description {
+  background: linear-gradient(135deg, #fdfdfd 0%, #f5f5f5 100%);
+  border-radius: 15px;
+  padding: 20px;
+  color: var(--aurea-dark);
+  font-weight: 500;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  flex-grow: 1;
+  font-size: 1rem;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+}
+
+.empresa-item .btn {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--aurea-orange) 0%, var(--aurea-granate) 100%);
+  transition: all 0.3s ease;
+}
+
+.empresa-item .btn:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, var(--aurea-granate) 0%, var(--aurea-orange) 100%);
+}
+/* ================= SECCIÓN CONTACTO ================= */
+#contactanos {
+    background: var(--light-gray);
+    padding: 4rem 2rem;
+}
+
+.contacto-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contacto-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contacto-header h2 {
+    color: var(--aurea-granate);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contacto-divider {
+    width: 80px;
+    height: 3px;
+    background: var(--aurea-orange);
+    border: none;
+    margin: 1rem auto;
+}
+
+.contacto-descripcion {
+    color: var(--aurea-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ================= FORMULARIO CONTACTO ================= */
+.formulario-contacto {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--aurea-dark);
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--light-gray);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--aurea-granate);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(133, 17, 17, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-enviar-contacto {
+    background: var(--aurea-granate);
+    color: var(--white);
+    padding: 14px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 2rem auto 0;
+    min-width: 200px;
+}
+
+.btn-enviar-contacto:hover {
+    background: var(--aurea-orange);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.btn-enviar-contacto:active {
+    transform: translateY(-1px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    #contactanos {
+        padding: 2rem 1rem;
+    }
+    
+    .contacto-header h2 {
+        font-size: 2rem;
+    }
+    
+    .formulario-contacto {
+        padding: 25px 20px;
+    }
+    
+    .btn-enviar-contacto {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-contacto {
+        padding: 20px 15px;
+    }
+    
+    .contacto-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contacto-descripcion {
+        font-size: 1rem;
+    }
+}
+/* ================= SECCIÓN CONTACTO ================= */
+#contactanos {
+    background: var(--light-gray);
+    padding: 4rem 2rem;
+}
+
+.contacto-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contacto-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contacto-header h2 {
+    color: var(--aurea-granate);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contacto-divider {
+    width: 80px;
+    height: 3px;
+    background: var(--aurea-orange);
+    border: none;
+    margin: 1rem auto;
+}
+
+.contacto-descripcion {
+    color: var(--aurea-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ================= FORMULARIO CONTACTO ================= */
+.formulario-contacto {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--aurea-dark);
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--light-gray);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--aurea-granate);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(133, 17, 17, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-enviar-contacto {
+    background: var(--aurea-granate);
+    color: var(--white);
+    padding: 14px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 2rem auto 0;
+    min-width: 200px;
+}
+
+.btn-enviar-contacto:hover {
+    background: var(--aurea-orange);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.btn-enviar-contacto:active {
+    transform: translateY(-1px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    #contactanos {
+        padding: 2rem 1rem;
+    }
+    
+    .contacto-header h2 {
+        font-size: 2rem;
+    }
+    
+    .formulario-contacto {
+        padding: 25px 20px;
+    }
+    
+    .btn-enviar-contacto {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-contacto {
+        padding: 20px 15px;
+    }
+    
+    .contacto-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contacto-descripcion {
+        font-size: 1rem;
+    }
+}
+
+/* ================= RESPONSIVE foort================= */
+@media (max-width: 768px) {
+    #contactanos {
+        padding: 2rem 1rem;
+    }
+    
+    .contacto-header h2 {
+        font-size: 2rem;
+    }
+    
+    .formulario-contacto {
+        padding: 25px 20px;
+    }
+    
+    .btn-enviar-contacto {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-contacto {
+        padding: 20px 15px;
+    }
+    
+    .contacto-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contacto-descripcion {
+        font-size: 1rem;
+    }
+}
+
+/* ========================
+   FOOTER
+   ======================== */
+footer {
+  background: linear-gradient(135deg, var(--aurea-granate), var(--aurea-orange));
+  color: var(--white);
+  padding: 50px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 15px 15px 0 0;
+}
+
+footer h4 {
+  font-weight: 1000;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+footer p {
+  margin-bottom: 10px;
+  color: rgba(255,255,255,0.9);
+}
+
+footer a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: var(--aurea-orange);
+  text-decoration: underline;
+}
+
+footer hr {
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin: 30px 0;
+}
+
+/* ========================
+   RESPONSIVE
+   ======================== */
+@media(max-width: 768px) {
+  .hero-cover h1 {
+    font-size: 2.2rem;
+  }
+  .hero-cover p {
+    font-size: 1.1rem;
+  }
+  .card-custom img {
+    height: 200px;
+  }
+}
+
+/* ========================
+   BOTONES
+   ======================== */
+.btn-granate {
+  background: var(--aurea-granate);
+  color: var(--white);
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-granate:hover {
+  background: var(--aurea-orange);
+  transform: translateY(-3px);
+  color: var(--white);
+}
+
+/* ========================
+   ANIMACIONES
+   ======================== */
+@keyframes zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}

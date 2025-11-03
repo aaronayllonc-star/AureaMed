@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áurea - Centro Auditivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ------------------------
+           Variables de color
+           ------------------------ */
+        :root{
+          --aurea-granate: #851111;   /* color granate principal (logo) */
+          --aurea-granate-2: #6b0b0b; /* tono más oscuro para sombras/bordes */
+          --aurea-orange:  #f2982e;   /* naranja/dorado (logo) */
+          --white:         #ffffff;
+          --muted:         #f4f6f8;
+          --text-dark:     #222;
+          --text-muted:    #555;      /* Nuevo: texto secundario con mejor contraste */
+        }
+
+        /* ========================
+           RESET / BASE
+           ======================== */
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0;padding:0;font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;background:#fafafa;color:var(--text-dark);-webkit-font-smoothing:antialiased;line-height:1.6}
+        a{color:inherit;text-decoration:none}
+
+        /* ========================
+           NAVBAR / MENU
+           ======================== */
+        .sticky-navbar{
+          position: sticky;
+          top: 0;
+          z-index: 9999;
+          background: linear-gradient(90deg, var(--aurea-granate), var(--aurea-orange));
+          padding: 10px 18px;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+          border-bottom: 3px solid rgba(0,0,0,0.06);
+        }
+
+        .sticky-navbar .navbar-brand{
+          color: var(--white) !important;
+          font-weight: 800;
+          letter-spacing: 0.6px;
+          font-size: 1.35rem;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 6px 8px;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .sticky-navbar .navbar-nav{
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-left: auto;
+          padding-left: 0;
+          list-style: none;
+        }
+
+        .sticky-navbar .nav-link,
+        .sticky-navbar .navbar-nav > li > a {
+          color: var(--white) !important;
+          font-weight: 600;
+          padding: 10px 14px;
+          border-radius: 8px;
+          transition: all 0.22s ease;
+          display: inline-block;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .sticky-navbar .navbar-nav > li {
+          margin: 0 6px;
+        }
+
+        .sticky-navbar .nav-link:hover,
+        .sticky-navbar .navbar-nav > li > a:hover,
+        .sticky-navbar .navbar-nav > li:focus-within > a{
+          color: var(--aurea-granate) !important;
+          background: rgba(255,255,255,0.95);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+        }
+
+        .sticky-navbar .nav-item.active > .nav-link,
+        .sticky-navbar .navbar-nav > li.active > a{
+          background: rgba(255,255,255,0.12);
+          color: var(--white) !important;
+          border-left: 3px solid rgba(255,255,255,0.16);
+        }
+
+        .sticky-navbar .dropdown-menu{
+          background: linear-gradient(180deg, var(--aurea-granate), var(--aurea-granate-2));
+          border: none;
+          padding: 8px 6px;
+          min-width: 210px;
+          margin-top: 8px;
+          box-shadow: 0 8px 26px rgba(0,0,0,0.28);
+          border-radius: 8px;
+        }
+
+        .sticky-navbar .dropdown-item,
+        .sticky-navbar .dropdown-menu .dropdown-item{
+          color: var(--white);
+          padding: 10px 16px;
+          display: block;
+          font-weight: 500;
+          border-radius: 6px;
+          margin: 4px 6px;
+          transition: background 0.18s ease, color 0.18s ease;
+        }
+
+        .sticky-navbar .dropdown-item:hover{
+          background: var(--aurea-orange);
+          color: var(--aurea-granate);
+        }
+
+        .navbar-toggler{
+          border: 1px solid rgba(255,255,255,0.22);
+          background: rgba(255,255,255,0.02);
+          padding: 6px 8px;
+          border-radius: 6px;
+        }
+
+        .navbar-toggler .navbar-toggler-icon{
+          width:22px;height:16px;display:inline-block;
+          background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='16'%3E%3Cpath stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' d='M2 2h18M2 8h18M2 14h18'/%3E%3C/svg%3E");
+          background-size:22px 16px;
+        }
+
+        @media (min-width: 992px){
+          .sticky-navbar .dropdown:hover .dropdown-menu{
+            display:block;
+            transform: translateY(6px);
+            opacity: 1;
+          }
+        }
+
+        /* ========================
+           HERO / PORTADA
+           ======================== */
+        .Pestaña.photo-cover{
+          position: relative;
+          width: 100%;
+          height: calc(100vh - 68px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 60px 20px;
+          color: var(--white);
+          background-image:
+            linear-gradient(120deg, rgba(133,17,17,0.85), rgba(242,152,46,0.7)),
+            url("https://www.resound.com/-/media/resound/resound-international/products/hearing-aids/nexia/overlay/full-family/rs_nx_hero-fade/hero-fade-overlay-rs_nx_concert_close2_00255-3200x1500-lighter2.ashx?w=3200&usecustomfunctions=1&centercrop=1&hash=EC1DA6095E22B5A3095C132CD9A94763");
+          background-size: cover;
+          background-position: center;
+          text-align: center;
+          box-shadow: inset 0 -80px 120px rgba(0,0,0,0.3);
+        }
+
+        .Pestaña .center, .Pestaña .col-md-6{
+          z-index: 3;
+          color: var(--white);
+        }
+
+        .Pestaña h1{
+          font-size: clamp(2rem, 4.5vw, 3.4rem);
+          margin: 0 0 20px;
+          font-weight: 800;
+          letter-spacing: 1px;
+          color: #fff;
+          text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+          line-height: 1.2;
+        }
+
+        .Pestaña p{
+          font-size: clamp(1rem, 1.6vw, 1.3rem);
+          margin: 6px 0 0;
+          font-weight: 500;
+          color: rgba(255,255,255,0.95);
+          text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.5;
+        }
+
+        /* ========================
+           CONTENIDO PRINCIPAL
+           ======================== */
+        .container-txt{
+          text-align:center;
+          margin: 60px auto;
+          padding: 0 16px;
+          max-width: 900px;
+        }
+
+        .container-txt .txt{
+          font-size: 2.6rem;
+          font-weight: 800;
+          color: var(--aurea-granate);
+          letter-spacing: 0.5px;
+          margin-bottom: 16px;
+          line-height: 1.2;
+        }
+
+        .container-txt .txt2{
+          font-size: 1.2rem;
+          color: var(--text-muted);
+          margin-bottom: 6px;
+          font-weight: 500;
+          line-height: 1.6;
+        }
+
+        /* ========================
+           TARJETAS
+           ======================== */
+        .tarjeta-personalizada{
+          position: relative;
+          overflow: hidden;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+          height: 380px;
+          transition: transform 0.28s ease, box-shadow 0.28s ease;
+          background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.06));
+        }
+
+        .tarjeta-personalizada img{
+          width:100%;
+          height:100%;
+          object-fit:cover;
+          display:block;
+          transition: transform 0.6s ease, filter 0.6s ease;
+        }
+
+        .tarjeta-personalizada:hover{
+          transform: translateY(-6px);
+          box-shadow: 0 18px 46px rgba(0,0,0,0.18);
+        }
+
+        .tarjeta-personalizada:hover img{
+          transform: scale(1.06);
+          filter: brightness(1.05);
+        }
+
+        .tarjeta-overlay{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          padding: 28px 24px;
+          background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4));
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .tarjeta-titulo{
+          color: var(--white);
+          font-weight: 700;
+          font-size: 1.5rem;
+          text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+          margin: 0;
+          letter-spacing: 0.5px;
+          text-align: center;
+        }
+
+        .tarjeta-overlay .btn{
+          width: 100%;
+          max-width: 220px;
+          padding: 12px 20px;
+          border-radius: 40px;
+          font-weight: 600;
+          border: none;
+          background: var(--aurea-granate);
+          color: var(--white);
+          transition: transform 0.18s ease, background 0.18s ease;
+          font-size: 1rem;
+        }
+
+        .tarjeta-overlay .btn:hover{
+          background: var(--aurea-orange);
+          color: var(--aurea-granate);
+          transform: translateY(-3px);
+        }
+
+        /* ========================
+           CARRUSEL
+           ======================== */
+        .carousel-caption.center-caption .headline{
+          font-weight: 800;
+          color: var(--white);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+          font-size: 2.2rem;
+          margin-bottom: 20px;
+        }
+
+        .btn-outline-custom{
+          display:inline-block;
+          padding: 12px 24px;
+          border-radius: 40px;
+          border: 2px solid rgba(255,255,255,0.9);
+          color: var(--white);
+          font-weight: 600;
+          background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+          transition: all 0.22s ease;
+          font-size: 1rem;
+        }
+
+        .btn-outline-custom:hover{
+          background: var(--aurea-orange);
+          color: var(--aurea-granate);
+          border-color: rgba(255,255,255,0.0);
+        }
+
+        /* ========================
+           EMPRESAS Y ASOCIACIONES (MEJORADO)
+           ======================== */
+        .empresas-section{
+          background: var(--muted);
+          padding: 60px 18px;
+          margin: 60px auto;
+          border-radius: 16px;
+          max-width: 1200px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+
+        .empresas-section h2 {
+          text-align: center;
+          color: var(--aurea-granate);
+          font-weight: 800;
+          margin-bottom: 40px;
+          font-size: 2.2rem;
+        }
+
+        .empresas-grid{
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 30px;
+        }
+
+        .empresa-item{
+          background: #fff;
+          padding: 25px;
+          border-radius: 12px;
+          text-align: center;
+          transition: transform 0.22s ease, box-shadow 0.22s ease;
+          border-top: 6px solid var(--aurea-granate);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        .empresa-item:hover{
+          transform: translateY(-8px);
+          box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .empresa-item h3{
+          color: var(--aurea-granate);
+          margin: 20px 0 15px;
+          font-size: 1.3rem;
+          font-weight: 700;
+          line-height: 1.3;
+        }
+
+        .empresa-item .description{
+          background: linear-gradient(180deg, #f9fbfc, #f6f9ff);
+          border-radius: 10px;
+          padding: 18px 15px;
+          color: #444;
+          font-weight: 500;
+          margin-bottom: 20px;
+          line-height: 1.6;
+          flex-grow: 1;
+          font-size: 0.95rem;
+        }
+
+        .empresa-item .btn {
+          margin-top: auto;
+        }
+
+        /* Botones generales */
+        .btn{
+          display:inline-block;
+          padding: 12px 24px;
+          border-radius: 8px;
+          background: var(--aurea-granate);
+          color: var(--white);
+          border: none;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration:none;
+          transition: all 0.2s ease;
+          font-size: 1rem;
+        }
+
+        .btn:hover{ 
+          background: var(--aurea-orange); 
+          color: var(--aurea-granate); 
+          transform: translateY(-2px);
+        }
+
+        /* ========================
+           FORMULARIOS / JUMBOTRON CONTACTO
+           ======================== */
+        .jumbotron{
+          background: linear-gradient(180deg, #ffffff, #fffaf3);
+          padding: 50px 30px;
+          border-radius: 12px;
+          margin: 60px auto;
+          max-width: 900px;
+          box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+        }
+
+        .jumbotron h2{ 
+          color: var(--aurea-granate); 
+          font-weight: 800; 
+          margin-bottom: 20px; 
+          text-align: center;
+          font-size: 2.2rem;
+        }
+        
+        .jumbotron label{ 
+          font-weight: 600; 
+          color: #444; 
+          margin-bottom: 8px;
+          display: block;
+        }
+        
+        .form-control{ 
+          border-radius: 8px; 
+          padding: 12px 16px; 
+          border: 1px solid #ddd; 
+          margin-bottom: 20px;
+          font-family: "Montserrat", sans-serif;
+          transition: border-color 0.2s ease;
+        }
+        
+        .form-control:focus {
+          border-color: var(--aurea-orange);
+          box-shadow: 0 0 0 0.25rem rgba(242, 152, 46, 0.25);
+        }
+        
+        .btn-inverse{
+          background: var(--aurea-granate);
+          color: var(--white);
+          padding: 12px 28px;
+          border-radius: 8px;
+          border: none;
+          font-weight: 600;
+          font-size: 1.1rem;
+          display: block;
+          width: 100%;
+          margin-top: 20px;
+        }
+        
+        .btn-inverse:hover{ 
+          background: var(--aurea-orange); 
+          color: var(--aurea-granate); 
+        }
+
+        /* ========================
+           FOOTER
+           ======================== */
+        footer{
+          background: linear-gradient(90deg, var(--aurea-granate), var(--aurea-granate-2));
+          color: var(--white);
+          padding: 50px 16px 30px;
+          margin-top: 60px;
+        }
+        
+        footer h3{ 
+          color: rgba(255,255,255,0.95); 
+          font-weight: 700; 
+          margin-bottom: 20px;
+          font-size: 1.4rem;
+        }
+        
+        footer p, footer li{ 
+          color: rgba(255,255,255,0.88); 
+          line-height: 1.6;
+          margin-bottom: 10px;
+        }
+        
+        footer a {
+          transition: color 0.2s ease;
+        }
+        
+        footer a:hover {
+          color: var(--aurea-orange);
+        }
+
+        /* ========================
+           ADAPTATIVIDAD
+           ======================== */
+        @media (max-width: 991px){
+          .sticky-navbar .navbar-nav{ gap: 6px; flex-direction: column; align-items: stretch; padding: 10px 6px; }
+          .sticky-navbar .navbar-brand{ font-size: 1.15rem; }
+          .Pestaña.photo-cover{ height: 60vh; padding: 36px 14px; }
+          .container-txt .txt{ font-size: 2rem; }
+          .tarjeta-personalizada{ height: 320px; }
+          .tarjeta-overlay .btn{ max-width: 100%; }
+          .empresas-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .container-txt {
+            margin: 40px auto;
+          }
+          
+          .container-txt .txt {
+            font-size: 1.8rem;
+          }
+          
+          .container-txt .txt2 {
+            font-size: 1.1rem;
+          }
+          
+          .empresas-section {
+            padding: 40px 15px;
+            margin: 40px auto;
+          }
+          
+          .empresas-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+          }
+        }
+
+        @media (max-width: 480px){
+          .sticky-navbar{ padding: 8px 10px; }
+          .sticky-navbar .nav-link{ padding: 8px 10px; font-size: 0.95rem; }
+          .Pestaña h1{ font-size: 1.8rem; }
+          .Pestaña p{ font-size: 1rem; }
+          .empresas-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* ========================
+           ÚLTIMOS AJUSTES / UTILIDADES
+           ======================== */
+        .text-inverse{ color: var(--white) !important; }
+        .center{ text-align:center }
+        
+        .section-title {
+          text-align: center;
+          color: var(--aurea-granate);
+          font-weight: 800;
+          margin-bottom: 40px;
+          font-size: 2.4rem;
+        }
+        
+        .text-highlight {
+          color: var(--aurea-orange);
+          font-weight: 700;
+        }
+
+        /* fin de archivo */
+    </style>
+</head>
+<body>
+    <!-- Navbar (simplificado para ejemplo) -->
+    <nav class="navbar sticky-navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ÁUREA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="Pestaña photo-cover">
+        <div class="center">
+            <h1>Centro Auditivo Áurea</h1>
+            <p>Expertos en soluciones auditivas personalizadas para mejorar tu calidad de vida</p>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <div class="container-txt">
+        <div class="txt">Nuestros Servicios Especializados</div>
+        <div class="txt2">Ofrecemos soluciones integrales para cada tipo de necesidad auditiva</div>
+    </div>
+
+    <!-- Tarjetas de Servicios -->
+    <div class="container mb-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="tarjeta-personalizada">
+                    <img src="https://placehold.co/600x400/851111/FFFFFF/png?text=Hipoacusia" alt="Hipoacusia">
+                    <div class="tarjeta-overlay">
+                        <h3 class="tarjeta-titulo">Hipoacusia</h3>
+                        <a href="#" class="btn">Más información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tarjeta-personalizada">
+                    <img src="https://placehold.co/600x400/851111/FFFFFF/png?text=Microtia" alt="Microtia">
+                    <div class="tarjeta-overlay">
+                        <h3 class="tarjeta-titulo">Microtia</h3>
+                        <a href="#" class="btn">Más información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tarjeta-personalizada">
+                    <img src="https://placehold.co/600x400/851111/FFFFFF/png?text=Anacusia" alt="Anacusia">
+                    <div class="tarjeta-overlay">
+                        <h3 class="tarjeta-titulo">Anacusia</h3>
+                        <a href="#" class="btn">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empresas y Asociaciones -->
+    <section class="empresas-section">
+        <h2>Empresas y Asociaciones</h2>
+        <div class="empresas-grid">
+            <div class="empresa-item">
+                <h3>Asociación Nacional de Audiología</h3>
+                <div class="description">
+                    Colaboramos con la ANA para ofrecer las últimas innovaciones en tecnología auditiva y mejores prácticas en el sector.
+                </div>
+                <a href="#" class="btn">Conocer más</a>
+            </div>
+            <div class="empresa-item">
+                <h3>Centro de Investigación Auditiva</h3>
+                <div class="description">
+                    Participamos activamente en investigaciones pioneras para desarrollar soluciones auditivas más efectivas y accesibles.
+                </div>
+                <a href="#" class="btn">Conocer más</a>
+            </div>
+            <div class="empresa-item">
+                <h3>Programas de Ayuda Comunitaria</h3>
+                <div class="description">
+                    Desarrollamos programas de apoyo para comunidades con recursos limitados, facilitando el acceso a soluciones auditivas.
+                </div>
+                <a href="#" class="btn">Conocer más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Contacta con Nosotros</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="tu@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="mensaje" rows="4" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                </div>
+                <button type="submit" class="btn-inverse">Enviar mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Áurea Centro Auditivo</h3>
+                    <p>Expertos en soluciones auditivas con más de 15 años de experiencia mejorando la calidad de vida de nuestros pacientes.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Contacto</h3>
+                    <p>📍 Calle Principal, 123</p>
+                    <p>📞 +34 912 345 678</p>
+                    <p>✉️ info@aureaauditivo.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Horario</h3>
+                    <p>Lunes a Viernes: 9:00 - 19:00</p>
+                    <p>Sábados: 10:00 - 14:00</p>
+                    <p>Domingos: Cerrado</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

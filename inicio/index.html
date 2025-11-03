@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUREA - Hipoacusia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="incio.css">
+  <link rel="stylesheet" href="guardar_comentario.php">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand text-white fw-bold" href="#">UNA VOZ SILENCIOSA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">Inicio</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" id="audicionDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Todo sobre la Audición</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="audicionDropdown">
+                        <li><a class="dropdown-item" href="/perdidaauditiva/auditiva.html">Cuidado Auditivo</a></li>
+                        <li><a class="dropdown-item" href="/estadistica/estadistica.html">Estadísticas</a></li>
+                           <li><a class="dropdown-item" href="/como funciona/funcion.html">Como funciona la audicion</a></li>
+                             <li><a class="dropdown-item" href="/prevenciones/cuidado.html">Como prevenir</a></li>
+                        <li><a class="dropdown-item" href="/leyes/leyes.html">Leyes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" id="nosotrosDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Sobre Nosotros</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nosotrosDropdown">
+                        <li><a class="dropdown-item" href="/ventas/ventas.html">Ventas</a></li>
+                        <li><a class="dropdown-item" href="/nosotros/Nosotros.html">Equipo</a></li>
+                        <li><a class="dropdown-item" href="#">Historia</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#contactanos">Contáctanos</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero-cover d-flex align-items-center justify-content-center">
+    <div class="hero-content text-center">
+      <h1>UNA VOZ EN SILENCIO</h1>
+      <p>SENCIBILIDAD Y EDUCACION SOBRE LA HIPOACUSIA A LA SOCIEDAD. <br>(Para persona discapacidad auditiva) </p>
+    </div>
+</section>
+
+<!-- ================= TRES CUADROS ================= -->
+<h2 class="text-center mb-4">TIPOS DE PÉRDIDA AUDITIVA</h2>
+<section class="container mt-5">
+  <div class="row g-4 text-center">
+    
+    <!-- Hipoacusia -->
+    <div class="col-md-4">
+      <div class="card-custom position-relative">
+        <img src="https://i.pinimg.com/564x/63/80/c1/6380c1f8ccd94a46c8c416df056b5ba5.jpg" alt="Hipoacusia">
+        <div class="card-overlay">
+          <h4>Hipoacusia</h4>
+          <a href="/hipoacusia/hipoacuasia.html" class="btn btn-granate mt-2">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Microtia -->
+    <div class="col-md-4">
+      <div class="card-custom position-relative">
+        <img src="https://i.pinimg.com/564x/43/ca/57/43ca570ecea2cb1adbbe8b29258ebf82.jpg" alt="Microtia">
+        <div class="card-overlay">
+          <h4>Microtia</h4>
+          <a href="/microtia/microtia.html" class="btn btn-granate mt-2">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Anacusia -->
+    <div class="col-md-4">
+      <div class="card-custom position-relative">
+        <img src="/imagenes/ANACUSIA.jpeg" alt="Anacusia">
+        <div class="card-overlay">
+          <h4>Anacusia</h4>
+          <a href="/implante/implante.html" class="btn btn-granate mt-2">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= EMPRESAS Y ASOCIACIONES ================= -->
+<section class="empresas-section py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Empresas y Asociaciones de Audición</h2>
+      <p class="text-center mb-5">Conoce a las principales empresas y asociaciones que trabajan para mejorar la audición de las personas.</p>
+      <div class="empresa-container">
+        <div class="empresa-item">
+          <img src="/imagenes/aurea.jpg" alt="Aurea" class="empresa-img">
+          <h3>Aurea evolución auditivo</h3>
+          <p class="description">Empresa líder en la fabricación de audífonos de alta calidad. Soluciones avanzadas de audición para todas las edades.</p>
+          <button class="btn">Conocer Más</button>
+        </div>
+        <div class="empresa-item">
+          <img src="/imagenes/audio.png" alt="Audio Service" class="empresa-img">
+          <h3>Audio Service Alemania</h3>
+          <p class="description">Especialistas en pruebas auditivas y rehabilitación. Contamos con expertos en audiología.</p>
+          <button class="btn">Más Información</button>
+        </div>
+        <div class="empresa-item">
+          <img src="/imagenes/ahlp.jpg" alt="Ahlp" class="empresa-img">
+          <h3>Asociación Hipoacusia La Paz</h3>
+          <p class="description">Organización sin fines de lucro dedicada a concientizar sobre la pérdida auditiva y apoyar a personas con hipoacusia.</p>
+          <a class="btn" href="/Ahlp/ahlp.html">Más Información</a>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+    <!-- ================= CONTACTO ================= -->
+   <!-- ================= CONTACTO ================= -->
+  <section id="contactanos" class="contenido">
+    <div class="contacto-container">
+      <div class="contacto-header">
+        <h2>Contáctanos</h2>
+        <hr class="contacto-divider">
+        <p class="contacto-descripcion">¿Tienes alguna pregunta o comentario? Escríbenos y te responderemos a la brevedad.</p>
+      </div>
+
+      <form class="formulario-contacto" action="guardar_comentario.php" method="post">
+
+        <div class="form-group">
+          <label for="nombre">Nombre Completo *</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo Electrónico *</label>
+          <input type="email" id="correo" name="correo" required>
+        </div>
+
+        <div class="form-group">
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto">
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-enviar-contacto">Enviar Mensaje</button>
+      </form>
+    </div>
+  </section>
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h4>Áurea Centro Auditivo</h4>
+                <p>Expertos en soluciones auditivas con más de 15 años de experiencia mejorando la calidad de vida de nuestros pacientes.</p>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h4>Contacto</h4>
+                <p>📍 Calle Principal, 123</p>
+                <p>📞 +34 912 345 678</p>
+                <p>✉️ info@aureaauditivo.com</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Horario</h4>
+                <p>Lunes a Viernes: 9:00 - 19:00</p>
+                <p>Sábados: 10:00 - 14:00</p>
+                <p>Domingos: Cerrado</p>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center mb-0">&copy; 2025 Áurea Centro Auditivo. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
